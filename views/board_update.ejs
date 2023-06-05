@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 수정</title>
+</head>
+<body>
+    <!-- 수정페이지는 입력 페이지와 태그구성, 디자인은 똑같으나 -->
+    <!-- action 속성 -> 수정하는 별도의 경로요청으로 변경 -->
+    <!-- input 태그의 value 값으로 이전의 게시글 내용을 DB에서 받아와야 함-->
+    <form action="/dbupdate" method="post">
+        <!-- 게시글 번호값 몇 번의 게시글 수정화면인지?-->
+        <!-- input type="hidden"은 실제 화면상에 보이지 않지만
+        전송버튼을 눌렀을 때 데이터값을 보낼 수 있는 타입 -->
+        <input type="hidden" name="num" value="<%- data.num %>">
+        <!-- insert에서 없었으나, 게시글 추가되면서 생성되는 num을 식별하기 위해 사용 -->
+        <input type="text" name="title" value="<%- data.title %>">
+        <input type="text" name="author" value="<%- data.author %>">
+        <button type="submit">수정하기</button>
+    </form>
+</body>
+</html>

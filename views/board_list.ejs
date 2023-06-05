@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록</title>
+    <style>
+        .lists {
+            border: 1px solid #000; 
+            margin: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- DB에 있는 데이터값 갯수만큼 생성-->
+    <% for( let i = 0; i < data.length; i++ ) { %>
+        <div class="lists">
+            <p><%- data[i].num %></p>
+            <!-- 숫자값이 필요한 이유? 수정/삭제시 식별 위해서 -->
+            <!-- 게시글을 지우고 나면, 해당 순번은 영구결번 -->
+            <h3><%- data[i].title %></h3>
+            <h6><%- data[i].author %></h6>
+            <a href="/brdupdate/<%- data[i].num %>">수정</a>
+            <a href="/dbdelete/<%- data[i].num %>">삭제</a>
+        </div>
+    <% } %>
+    <a href="/brdinsert">글쓰기</a>
+</body>
+</html>
